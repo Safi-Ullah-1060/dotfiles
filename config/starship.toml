@@ -1,16 +1,84 @@
-[username]
-show_always = true
-style_user = "bright-blue"
-style_root = "bright-red"
+"$schema" = 'https://starship.rs/config-schema.json'
 
-[hostname]
-ssh_only = false
-style = "bright-blue"
+format = """
+[░▒▓](#474747)\
+[  ](bg:#474747 fg:#D8B89D)\
+[](bg:#292929 fg:#474747)\
+$directory\
+[](fg:#292929 bg:#4E3C3B)\
+$git_branch\
+$git_status\
+[](fg:#4E3C3B bg:#5C5F4F)\
+$nodejs\
+$bun\
+$rust\
+$golang\
+$php\
+$python\
+$cpp\
+[](fg:#5C5F4F bg:#5C5F4F)\
+$time\
+[ ](fg:#5C5F4F)\
+\n$character"""
 
 [directory]
-truncation_length = 0
-style = "bright-blue"
+style = "fg:#e3e5e5 bg:#292929"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
 
-[character]
-success_symbol = "[🗸](cyan)"
-error_symbol = "[✗](red)"
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+
+[git_branch]
+symbol = ""
+style = "bg:#4E3C3B"
+format = '[[ $symbol $branch ](fg:#D8B89D bg:#4E3C3B)]($style)'
+
+[git_status]
+style = "bg:#4E3C3B"
+format = '[[($all_status$ahead_behind )](fg:#D8B89D bg:#4E3C3B)]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:#5C5F4F"
+format = '[[ $symbol ($version) ](fg:#D8B89D bg:#5C5F4F)]($style)'
+
+[bun]
+symbol = ""
+style = "bg:#5C5F4F"
+format = '[[ $symbol ($version) ](fg:#D8B89D bg:#5C5F4F)]($style)'
+
+[rust]
+symbol = ""
+style = "bg:#5C5F4F"
+format = '[[ $symbol ($version) ](fg:#D8B89D bg:#5C5F4F)]($style)'
+
+[python]
+symbol = "󰌠 "
+style = "bg:#5C5F4F"
+format = '[[ $symbol ($version) ](fg:#D8B89D bg:#5C5F4F)]($style)'
+
+[cpp]
+symbol = "󰙲 "
+style = "bg:#5C5F4F"
+format = '[[ $symbol ($version) ](fg:#D8B89D bg:#5C5F4F)]($style)'
+
+[golang]
+symbol = ""
+style = "bg:#5C5F4F"
+format = '[[ $symbol ($version) ](fg:#D8B89D bg:#5C5F4F)]($style)'
+
+[php]
+symbol = ""
+style = "bg:#5C5F4F"
+format = '[[ $symbol ($version) ](fg:#D8B89D bg:#5C5F4F)]($style)'
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "bg:#5C5F4F"
+format = '[[  $time ](fg:#D8B89D bg:#5C5F4F)]($style)'

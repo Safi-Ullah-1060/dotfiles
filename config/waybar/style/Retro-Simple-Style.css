@@ -25,7 +25,7 @@ window#waybar {
   transition-property: background-color;
   transition-duration: 0.5s;
   /* Waybar scaling: adjust font-size to scale the bar */
-  font-size: 18px;
+  font-size: 20px;
 }
 
 #taskbar button,

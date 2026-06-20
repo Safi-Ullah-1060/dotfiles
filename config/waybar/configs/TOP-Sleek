@@ -29,7 +29,7 @@
 	"custom/separator#blank",
 	"idle_inhibitor",
 	"custom/separator#blank",
-	"clock#3",
+  "clock#noSeconds",
 	"custom/separator#blank",
 	"group/notify"
 ],

@@ -221,7 +221,7 @@
 }
 
 .widget-dnd>switch slider {
-    background: @noti-bg;
+    background: #F7F7F7;
     border-radius: 10px
 }
 

@@ -6,6 +6,8 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+eval "$(starship init bash)"
+
 alias cls="clear"
 alias update-boot="sudo bootctl update"
 alias ls='eza --icons'
