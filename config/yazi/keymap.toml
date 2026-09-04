@@ -1,6 +1,6 @@
 [mgr]
 prepend_keymap = [
-  { on = ["g", "u"], run = "cd ~/Uni-Data/Sem-IV", desc = "Go to Sem Data" },
+  { on = ["g", "u"], run = "cd ~/Uni-Data/Sum-26", desc = "Go to Sem Data" },
   { on = "u", run = "plugin restore", desc = "Restore last deleted files/folders" },
   { on   = [ "c", "a", "a" ], run  = "plugin compress", desc = "Archive selected files" },
   { on   = [ "c", "a", "p" ], run  = "plugin compress -p", desc = "Archive selected files (password)"},

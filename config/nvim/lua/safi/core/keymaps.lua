@@ -13,9 +13,11 @@ local map = vim.keymap.set
 -- ─── General ──────────────────────────────────────────────────────────────────
 map("i", "jk", "<ESC>", { desc = "Exit insert mode" })
 map("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
-map("n", "<leader>=", "<C-a>", { desc = "Increment number" })
-map("n", "<leader>-", "<C-x>", { desc = "Decrement number" })
 map({ "n", "v" }, "<A-s>", ":w<CR>", { desc = "Write Buffer" })
+
+-- ─── Oil ──────────────────────────────────────────────────────────────────────
+map({ "n", "v" }, "<leader>j", ":Oil<CR>", { desc = "Open Oil" })
+map({ "n", "v" }, "<leader>k", ":Oil --float .<CR>", { desc = "Open Oil in Float mode" })
 
 -- ─── Window management ────────────────────────────────────────────────────────
 map("n", "<leader>sv", "<C-w>v", { desc = "Split vertically" })
@@ -32,7 +34,7 @@ map("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open buffer in new tab" })
 
 -- Jump to tab 1, 2, etc. with Alt + number
 for i = 1, 9 do
-  vim.keymap.set('n', '<A-' .. i .. '>', i .. 'gt', { noremap = true })
+  vim.keymap.set("n", "<A-" .. i .. ">", i .. "gt", { noremap = true })
 end
 
 -- ─── Clipboard ────────────────────────────────────────────────────────────────

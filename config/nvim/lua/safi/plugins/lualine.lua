@@ -62,7 +62,11 @@ return {
             color = { fg = "#ff9e3b" },
           },
           { "encoding" },
-          { "fileformat", symbols = { unix = "" } },
+          {
+            "fileformat",
+            symbols = { unix = " " },
+            color = { fg = "#00C0F0" },
+          },
           { "filetype" },
         },
       },

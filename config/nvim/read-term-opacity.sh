@@ -1,6 +1,6 @@
 #!/bin/bash
-myD=`grep -m 1 -i "ColorScheme=" "$HOME/.local/share/konsole/My Default.profile"`
-myD=`echo "${myD/ColorScheme=}"`
-op=`grep -m 1 -i "Opacity=" "$HOME/.local/share/konsole/$myD.colorscheme"`
-op=`echo "${op/Opacity=}"`
-echo $op
+theme_path=`grep -m 1 -i "include" "$HOME/.config/kitty/kitty.conf"`
+theme_path=`echo "${HOME}/.config/kitty/${theme_path/include }"`
+opacity=`grep -m 1 -i "background_opacity" "$theme_path"`
+opacity=`echo "${opacity/background_opacity }"`
+echo $opacity
