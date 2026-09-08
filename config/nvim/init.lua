@@ -3,7 +3,7 @@ require("safi.lazy")
 require("safi.lsp")
 vim.g.uni = "~/dotfiles/config"
 vim.o.background = "dark"
-vim.cmd([[colorscheme kanagawa]])
+vim.cmd("colorscheme onedark_dark")
 vim.g.uni = "~/Uni Data/Sem IV"
 if vim.g.neovide then
   local function get_kitty_opacity()
@@ -12,7 +12,9 @@ if vim.g.neovide then
 
     -- find the include line to get the theme path
     local f = io.open(kitty_conf, "r")
-    if not f then return 1.0 end
+    if not f then
+      return 1.0
+    end
     local theme_file
     for line in f:lines() do
       local inc = line:match("^include%s+(.+)$")
@@ -23,11 +25,15 @@ if vim.g.neovide then
     end
     f:close()
 
-    if not theme_file then return 1.0 end
+    if not theme_file then
+      return 1.0
+    end
 
     -- read opacity from theme file
     local tf = io.open(theme_file, "r")
-    if not tf then return 1.0 end
+    if not tf then
+      return 1.0
+    end
     local opacity
     for line in tf:lines() do
       local val = line:match("^background_opacity%s+(.+)$")
