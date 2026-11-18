@@ -5,5 +5,5 @@
   "ProgressBarStyle": "Blocks",
   "ProgressBarWidth": 24,
   "OutputMode": "singlepane",
-  "AppImageInstallPath": null
+  "AppImageInstallPath": "/home/safi/AppImages"
 }

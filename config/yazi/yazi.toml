@@ -1,87 +1,27 @@
+# yazi.
+#
+# editor opener: upstream Ryoku punts text/code through `ryoku-launch-editor`,
+# which isn't present on a slim Arch+Ryoku box. so `edit` runs nvim directly
+# with block=true (nvim owns yazi's terminal until you quit it).
+
 [mgr]
-ratio = [0, 2, 1]
-sort_by = "natural"
-sort_sensitive = true
-sort_dir_first = true
+# show dotfiles in listings.
+show_hidden = true
+
 [opener]
-folder = [
-  { run = 'hyprctl dispatch exec "[float; size 60% 60%; center 1] nemo" "$@"', orphan = true, desc = "nemo", for = "linux" },
-  { run = 'cd "$@" && nvim .', block = true, desc = "neovim", for = "linux" },
-  { run = 'cd "$@" && kitty --detach nvim .', orphan = true, desc = "neovim (detached)", for = "linux" },
-  { run = '''bash -c "lazygit -p "$1""''', block = true, desc = "lazygit", for = "linux" },
-  { run = 'codium  "$@"', orphan = true, desc = "vscodium", for = "linux" },
-  { run = 'kitty "$@"', orphan = true, desc = "kitty", for = "linux" },
-  { run = 'xdg-open "$@"', orphan = true, desc = "xdg-open", for = "linux" },
-]
-
-text = [
-  { run = '$EDITOR "$@"', block = true, desc = "$EDITOR", for = "linux" },
-  { run = 'nvim "$@"', block = true, desc = "neovim", for = "linux" },
-  { run = 'kitty --detach nvim "$@"', block = true, desc = "neovim (detached)", for = "linux" },
-  { run = 'codium  "$@"', orphan = true, desc = "vscodium", for = "linux" },
-  { run = 'xdg-open "$@"', orphan = true, desc = "xdg-open", for = "linux" },
-]
-
-document = [
-  { run = 'xdg-open "$@"', orphan = true, desc = "xdg-open", for = "linux" },
-  { run = 'zathura "$@"', orphan = true, desc = "zathura", for = "linux" },
-  { run = 'libreoffice "$@"', orphan = true, desc = "libreoffice", for = "linux" },
-]
-
-image = [
-  { run = 'xdg-open "$@"', orphan = true, desc = "xdg-open", for = "linux" },
-  { run = 'qimgv "$@"', orphan = true, desc = "qimgv", for = "linux" },
-  { run = 'krita "$@"', orphan = true, desc = "krita", for = "linux" },
-  { run = 'satty --filename "$@"', orphan = true, desc = "satty", for = "linux" },
-]
-video = [
-  { run = 'xdg-open "$@"', orphan = true, desc = "xdg-open", for = "linux" },
-  { run = 'mpv "$@"', orphan = true, desc = "mpv", for = "linux" },
-]
-audio = [
-  { run = 'xdg-open "$@"', orphan = true, desc = "xdg-open", for = "linux" },
-  { run = 'mpv "$@"', orphan = true, desc = "mpv", for = "linux" },
-]
-fallback = [
-  { run = 'xdg-open "$@"', orphan = true, desc = "xdg-open", for = "linux" },
+edit = [
+  { run = 'nvim "$@"', block = true, desc = 'Edit with Neovim', for = 'unix' },
 ]
 
 [open]
-rules = [
-  { url = "*/", use = "folder" },
-
-  { mime = "text/*", use = "text" },
-  { mime = "image/*", use = "image" },
-  { mime = "video/*", use = "video" },
-  { mime = "application/octet-stream", use = "video" },
-  { mime = "audio/*", use = "audio" },
-  { mime = "inode/x-empty", use = "text" },
-  { mime = "application/json", use = "text" },
-
-  { mime = "application/zip", use = "archive" },
-  { mime = "application/gzip", use = "archive" },
-  { mime = "application/x-bzip", use = "archive" },
-  { mime = "application/x-bzip2", use = "archive" },
-  { mime = "application/x-tar", use = "archive" },
-  { mime = "application/x-7z-compressed", use = "archive" },
-  { mime = "application/x-rar", use = "archive" },
-  { mime = "application/pdf", use = "document" },
-  { mime = "application/epub+zip", use = "document" },
-  { mime = "application/x-mobipocket-ebook", use = "document" },
-
-  { mime = "*", use = "fallback" },
+prepend_rules = [
+  { mime = 'text/*', use = 'edit' },
+  { mime = 'application/json', use = 'edit' },
+  { mime = 'application/xml', use = 'edit' },
+  { url = '*.toml', use = 'edit' },
+  { url = '*.json', use = 'edit' },
+  { url = '*.kdl', use = 'edit' },
+  { url = '*.yml', use = 'edit' },
+  { url = '*.yaml', use = 'edit' },
+  { url = '*.conf', use = 'edit' },
 ]
-
-[[plugin.prepend_fetchers]]
-id = "git"
-name = "*"
-url = "*"
-run = "git"
-group = "default"
-
-[[plugin.prepend_fetchers]]
-id = "git"
-name = "*/"
-url = "*/"
-run = "git"
-group = "default"

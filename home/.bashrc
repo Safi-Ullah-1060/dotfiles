@@ -44,3 +44,6 @@ PS2="\[$(tput setaf 4)\]>\[$(tput sgr0)\] "
 
 # Created by `pipx` on 2026-05-19 20:11:29
 export PATH="$PATH:/home/safi/.local/bin"
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"

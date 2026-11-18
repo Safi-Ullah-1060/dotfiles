@@ -1,3 +1,32 @@
+# Functions
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	command yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
+
+function zsh_greeting() {
+    # echo -ne '\x1b[38;5;16m'  # Set colour to primary
+    # echo ''
+    # echo '   ············································ '
+    # echo '   :   ____        _   _                  _   : '
+    # echo '   :  | __ )  __ _| |_| |_ ___  ___  __ _(_)  : '
+    # echo '   :  |  _ \ / _` | __| __/ _ \/ __|/ _` | |  : '
+    # echo '   :  | |_) | (_| | |_| || (_) \__ \ (_| | |  : '
+    # echo '   :  |____/ \__,_|\__|\__\___/|___/\__,_|_|  : '
+    # echo '   :                                          : '
+    # echo '   ············································ '
+    mdcat --margin "$HOME/My Notes/Be Better.md"
+    # command -v fastfetch &> /dev/null && fastfetch --key-padding-left 5
+}
+
+# Custom colours
+cat ~/.local/state/caelestia/sequences.txt 2> /dev/null
+
+zsh_greeting
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
@@ -67,14 +96,9 @@ export EDITOR="nvim"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c"
 
-# Functions
-function y() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-	command yazi "$@" --cwd-file="$tmp"
-	IFS= read -r -d '' cwd < "$tmp"
-	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
-	rm -f -- "$tmp"
-}
-
 # Powerlevel10k Theme Loading
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"

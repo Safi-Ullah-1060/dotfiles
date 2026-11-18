@@ -1,84 +1,43 @@
-"$schema" = 'https://starship.rs/config-schema.json'
+add_newline = false
+palette = "wallpaper"
 
+# floating pill layout
 format = """
-[░▒▓](#474747)\
-[   ](bg:#474747 fg:#00C0F0)\
-[](bg:#292929 fg:#474747)\
-$directory\
-[](fg:#292929 bg:#4E3C3B)\
-$git_branch\
-$git_status\
-[](fg:#4E3C3B bg:#5C5F4F)\
-$nodejs\
-$bun\
-$rust\
-$golang\
-$php\
-$python\
-$cpp\
-[](fg:#5C5F4F bg:#5C5F4F)\
-$time\
-[ ](fg:#5C5F4F)\
-\n$character"""
+$directory$git_branch$cmd_duration
+$character"""
 
 [directory]
-style = "fg:#e3e5e5 bg:#292929"
-format = "[ $path ]($style)"
+style = "fg:dir_fg bg:dir_bg bold"
 truncation_length = 3
 truncation_symbol = "…/"
-
-[directory.substitutions]
-"Documents" = "󰈙 "
-"Downloads" = " "
-"Music" = " "
-"Pictures" = " "
+read_only = " 󰌾"
+read_only_style = "fg:crimson bg:dir_bg bold"
+# Nerd Font half-circles = the pill caps
+format = "[](fg:dir_bg)[󰉋 $path ]($style)[$read_only]($read_only_style)[](fg:dir_bg) "
 
 [git_branch]
-symbol = ""
-style = "bg:#4E3C3B"
-format = '[[ $symbol $branch ](fg:#D8B89D bg:#4E3C3B)]($style)'
+symbol = "󰊢 "
+style = "fg:git_fg bg:git_bg bold"
+format = "[](fg:git_bg)[$symbol$branch ]($style)[](fg:git_bg) "
 
-[git_status]
-style = "bg:#4E3C3B"
-format = '[[($all_status$ahead_behind )](fg:#D8B89D bg:#4E3C3B)]($style)'
+[cmd_duration]
+min_time = 500
+style = "fg:time_fg bg:time_bg bold"
+format = "[](fg:time_bg)[󰔚 $duration ]($style)[](fg:time_bg) "
 
-[nodejs]
-symbol = ""
-style = "bg:#5C5F4F"
-format = '[[ $symbol ($version) ](fg:#D8B89D bg:#5C5F4F)]($style)'
+[character]
+# lambda, not a chevron
+success_symbol = "[λ ](bold fg:dir_fg)"
+error_symbol = "[λ ](bold fg:crimson)"
 
-[bun]
-symbol = ""
-style = "bg:#5C5F4F"
-format = '[[ $symbol ($version) ](fg:#D8B89D bg:#5C5F4F)]($style)'
+[package]
+disabled = true
 
-[rust]
-symbol = ""
-style = "bg:#5C5F4F"
-format = '[[ $symbol ($version) ](fg:#D8B89D bg:#5C5F4F)]($style)'
-
-[python]
-symbol = "󰌠 "
-style = "bg:#5C5F4F"
-format = '[[ $symbol ($version) ](fg:#D8B89D bg:#5C5F4F)]($style)'
-
-[cpp]
-symbol = "󰙲 "
-style = "bg:#5C5F4F"
-format = '[[ $symbol ($version) ](fg:#D8B89D bg:#5C5F4F)]($style)'
-
-[golang]
-symbol = ""
-style = "bg:#5C5F4F"
-format = '[[ $symbol ($version) ](fg:#D8B89D bg:#5C5F4F)]($style)'
-
-[php]
-symbol = ""
-style = "bg:#5C5F4F"
-format = '[[ $symbol ($version) ](fg:#D8B89D bg:#5C5F4F)]($style)'
-
-[time]
-disabled = false
-time_format = "%R" # Hour:Minute Format
-style = "bg:#5C5F4F"
-format = '[[  $time ](fg:#D8B89D bg:#5C5F4F)]($style)'
+[palettes.wallpaper]
+dir_bg = "#1d2024"
+git_bg = "#3c4858"
+time_bg = "#533f5f"
+dir_fg = "#a2c9fe"
+git_fg = "#d7e3f8"
+time_fg = "#f4d9ff"
+crimson = "#ffb4ab"

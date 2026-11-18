@@ -1,5 +1,91 @@
-[flavor]
-dark = "gruvbox-material"
+# Ryoku palette for yazi. Rendered by the theme daemon; do not edit.
+#
+# yazi reads theme.toml beside yazi.toml. Ryoku ships only yazi.toml, so this
+# file is the daemon's alone and clobbers nothing you wrote.
+
 [mgr]
-cwd = { fg = "white", bold = true }
-border_style = { fg = "darkgray", bold = true }
+cwd = { fg = "#bbc7db" }
+
+hovered = { fg = "#d2e4ff", bg = "#1d4875" }
+preview_hovered = { underline = true }
+
+find_keyword = { fg = "#d8bde4", bold = true }
+find_position = { fg = "#bbc7db", bold = true }
+
+marker_copied = { fg = "#d8bde4", bg = "#d8bde4" }
+marker_cut = { fg = "#ffb4ab", bg = "#ffb4ab" }
+marker_marked = { fg = "#bbc7db", bg = "#bbc7db" }
+marker_selected = { fg = "#a2c9fe", bg = "#a2c9fe" }
+
+tab_active = { fg = "#00325a", bg = "#a2c9fe" }
+tab_inactive = { fg = "#c3c6cf", bg = "#1d2024" }
+
+border_symbol = "│"
+border_style = { fg = "#43474e" }
+
+[mode]
+normal_main = { fg = "#00325a", bg = "#a2c9fe", bold = true }
+normal_alt = { fg = "#a2c9fe", bg = "#1d2024" }
+select_main = { fg = "#3c2947", bg = "#d8bde4", bold = true }
+select_alt = { fg = "#d8bde4", bg = "#1d2024" }
+unset_main = { fg = "#690005", bg = "#ffb4ab", bold = true }
+unset_alt = { fg = "#ffb4ab", bg = "#1d2024" }
+
+[status]
+progress_label = { fg = "#e1e2e8", bold = true }
+progress_normal = { fg = "#a2c9fe", bg = "#1d2024" }
+progress_error = { fg = "#ffb4ab", bg = "#1d2024" }
+
+[input]
+border = { fg = "#a2c9fe" }
+title = {}
+value = {}
+selected = { reversed = true }
+
+[pick]
+border = { fg = "#a2c9fe" }
+active = { fg = "#d8bde4", bold = true }
+inactive = {}
+
+[cmp]
+border = { fg = "#a2c9fe" }
+active = { fg = "#d8bde4", bold = true }
+inactive = {}
+
+[tasks]
+border = { fg = "#a2c9fe" }
+title = {}
+hovered = { fg = "#d8bde4", underline = true }
+
+[which]
+mask = { bg = "#1d2024" }
+cand = { fg = "#bbc7db" }
+rest = { fg = "#c3c6cf" }
+desc = { fg = "#d8bde4" }
+separator = "  "
+separator_style = { fg = "#8d9199" }
+
+[help]
+on = { fg = "#bbc7db" }
+run = { fg = "#d8bde4" }
+hovered = { reversed = true, bold = true }
+footer = { fg = "#e1e2e8", bg = "#1d2024" }
+
+[notify]
+title_info = { fg = "#a2c9fe" }
+title_warn = { fg = "#d8bde4" }
+title_error = { fg = "#ffb4ab" }
+
+# the file list itself: dirs and file kinds carry the palette so yazi matches
+# kitty's ANSI colours (base16), not yazi's built-in defaults. First match wins,
+# so the "*" fallback stays last.
+[filetype]
+rules = [
+	{ mime = "image/*", fg = "#d8bde4" },
+	{ mime = "{audio,video}/*", fg = "#a2c9fe" },
+	{ mime = "application/{zip,gzip,x-tar,x-bzip2,x-7z-compressed,x-rar,vnd.rar,x-xz,zstd}", fg = "#a2c9fe" },
+	{ url = "*", is = "orphan", fg = "#ffb4ab" },
+	{ url = "*", is = "exec", fg = "#d8bde4" },
+	{ url = "*/", fg = "#bbc7db", bold = true },
+	{ url = "*", fg = "#e1e2e8" },
+]
